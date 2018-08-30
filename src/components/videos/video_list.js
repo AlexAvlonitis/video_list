@@ -3,18 +3,24 @@ import { connect } from 'react-redux';
 import VideoItem from './video_item';
 
 class VideoList extends Component {
-  renderVideoItem = (video, index) => {
-    <VideoItem key={index} video={video} />
+  renderVideoItem = (video) => {
+    return(
+      <VideoItem key={video.id} video={video} />
+    )
   }
 
   renderVideos = () => {
-    this.props.videos.map(this.renderVideoItem)
+    const videoList = this.props.videoList;
+
+    return (
+      videoList.map(this.renderVideoItem)
+    );
   }
 
   render() {
     return(
       <ul>
-        {this.renderVideos()}
+        { this.renderVideos() }
       </ul>
     )
   }
@@ -22,7 +28,7 @@ class VideoList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    videos: state.videos.list
+    videoList: state.videos.list
   };
 }
 

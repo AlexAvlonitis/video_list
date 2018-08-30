@@ -1,4 +1,8 @@
-import fetch from 'cross-fetch';
+export const ADD_VIDEO = 'ADD VIDEO';
 
-export const addVideo = (url) => {
+export const addVideo = (videoData) => {
+  return {
+    type: ADD_VIDEO,
+    payload: videoData
+  }
 }
