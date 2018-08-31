@@ -1,4 +1,4 @@
-import { ADD_VIDEO, REMOVE_VIDEO } from '../actions/videos'
+import { ADD_VIDEO, REMOVE_VIDEO, EDIT_VIDEO } from '../actions/videos'
 
 const initialState = {
   list: []
@@ -14,8 +14,17 @@ export default (state = initialState, action) => {
 
   case REMOVE_VIDEO:
     return {
-      list: [...state.list.filter( (item) => item.id !== action.payload)]
+      list: [...state.list.filter( (video) => video.id !== action.payload)]
     }
+
+  case EDIT_VIDEO:
+    const updatedItems = state.list.map(video => {
+        if(video.id === action.payload.id){
+          return { ...video, ...action.payload }
+        }
+        return video
+      });
+    return { list: updatedItems };
 
   default:
     return state;

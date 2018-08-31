@@ -19,7 +19,12 @@ class VideoForm extends Component {
     e.preventDefault();
 
     this.props.addVideo(this.state);
-    this.setState({id: this.state.id + 1})
+    this.setState({
+      id: this.state.id + 1,
+      name: '',
+      duration: '',
+      url: ''
+    });
   }
 
   handleChange = (e) => {
