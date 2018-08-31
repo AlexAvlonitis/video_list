@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeVideo, editVideo } from '../../redux/actions/videos';
@@ -94,19 +95,27 @@ class VideoItem extends Component {
     )
   }
 
+  renderVideoDetails = (e) => {
+    e.preventDefault();
+    const video = this.props.video;
+
+    const element = (
+      <div>
+        <h2>PLAYING VIDEO....</h2>
+        <p>{video.name} {video.duration} {video.url}</p>
+      </div>
+    )
+
+    render(element, document.getElementById('videoDetails'))
+  }
+
   renderItem = () => {
     const video = this.props.video
 
     return (
       <ul className='list-group'>
         <li className="list-group-item">
-          <p>{video.name}</p>
-        </li>
-        <li className="list-group-item">
-          <p>{video.duration}</p>
-        </li>
-        <li className="list-group-item">
-          <p>{video.url}</p>
+          <a href='' onClick={this.renderVideoDetails} >Video name: {video.name}</a>
         </li>
 
         <button className="btn btn-primary" onClick={this.handleEditClick}>
@@ -123,6 +132,7 @@ class VideoItem extends Component {
   render() {
     return(
       <div>
+        <header id='videoDetails'></header>
         { this.state.isEditing ? this.renderForm() : this.renderItem() }
       </div>
     );
