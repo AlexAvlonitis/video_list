@@ -50,33 +50,44 @@ class VideoItem extends Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            name='name'
-            onChange={this.handleChange}
-            value={this.state.name}
-            placeholder='Name'
-          />
-          <input
-            type='text'
-            name='duration'
-            onChange={this.handleChange}
-            value={this.state.duration}
-            placeholder='Duration'
-          />
-          <input
-            type='text'
-            name='url'
-            onChange={this.handleChange}
-            value={this.state.url}
-            placeholder='Url'
-          />
-          <input type='submit' value='Save'/>
+          <div className="form-group">
+            <input
+              type='text'
+              name='name'
+              className="form-control"
+              onChange={this.handleChange}
+              value={this.state.name}
+              placeholder='Name'
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type='text'
+              name='duration'
+              className="form-control"
+              onChange={this.handleChange}
+              value={this.state.duration}
+              placeholder='Duration'
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type='text'
+              name='url'
+              className="form-control"
+              onChange={this.handleChange}
+              value={this.state.url}
+              placeholder='Url'
+            />
+          </div>
+          <div className="form-group">
+            <input className="btn btn-primary" type='submit' value='Save'/>
+          </div>
         </form>
-        <button onClick={this.handleCancelClick}>
+        <button className="btn btn-primary" onClick={this.handleCancelClick}>
           Cancel
         </button>
-        <button onClick={this.handleRemoveClick}>
+        <button className="btn btn-secondary" onClick={this.handleRemoveClick}>
           Remove
         </button>
       </div>
@@ -87,19 +98,25 @@ class VideoItem extends Component {
     const video = this.props.video
 
     return (
-      <li>
-        <p>{video.name}</p>
-        <p>{video.duration}</p>
-        <p>{video.url}</p>
+      <ul className='list-group'>
+        <li className="list-group-item">
+          <p>{video.name}</p>
+        </li>
+        <li className="list-group-item">
+          <p>{video.duration}</p>
+        </li>
+        <li className="list-group-item">
+          <p>{video.url}</p>
+        </li>
 
-        <button onClick={this.handleEditClick}>
+        <button className="btn btn-primary" onClick={this.handleEditClick}>
           Edit
         </button>
-        <button onClick={this.handleRemoveClick}>
+        <button className="btn btn-secondary" onClick={this.handleRemoveClick}>
           Remove
         </button>
         <hr />
-      </li>
+      </ul>
     )
   }
 

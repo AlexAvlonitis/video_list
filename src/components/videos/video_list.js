@@ -19,9 +19,9 @@ class VideoList extends Component {
 
   render() {
     return(
-      <ul>
+      <div>
         { this.renderVideos() }
-      </ul>
+      </div>
     )
   }
 }

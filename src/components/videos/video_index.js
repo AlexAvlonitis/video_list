@@ -4,7 +4,7 @@ import VideoList from './video_list';
 
 export default function VideoIndex() {
   return(
-    <div>
+    <div className="text-center">
       <h1>Video List</h1>
       <VideoForm />
       <VideoList />
